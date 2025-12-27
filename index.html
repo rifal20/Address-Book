@@ -3,282 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ContactHub - Modern Edition</title>
+    <title>Address Book - Kelola Kontak</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="dark-mode">
-    <!-- Animated Background -->
-    <div class="stars"></div>
-    <div class="twinkling"></div>
-
-    <!-- Main Container -->
-    <div class="app-wrapper">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <div class="logo">
-                    <div class="logo-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                            <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <span class="logo-text">ContactHub</span>
-                </div>
-            </div>
-
-            <nav class="sidebar-nav">
-                <button class="nav-item active" data-section="contacts">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                        <path d="M17 21V19C17 16.7909 15.2091 15 13 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2"/>
-                        <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
-                        <path d="M23 21V19C23 17.1362 21.7252 15.5701 20 15.126M16 3.12602C17.7252 3.57006 19 5.13616 19 7C19 8.86384 17.7252 10.4299 16 10.874" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-                    <span>Contacts</span>
-                    <span class="badge" id="contactCount">0</span>
-                </button>
-
-                <button class="nav-item" data-section="add">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                        <path d="M12 8V16M8 12H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                    <span>Add New</span>
-                </button>
-
-                <button class="nav-item" data-section="stats">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                        <path d="M3 3V19C3 20.1046 3.89543 21 5 21H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M7 14L12 9L16 13L21 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                    <span>Statistics</span>
-                </button>
-            </nav>
-
-            <div class="sidebar-footer">
-                <!-- Theme Toggle -->
-                <div class="theme-toggle-wrapper">
-                    <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
-                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
-                            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
-                            <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
-                            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                        <div class="theme-toggle-slider"></div>
-                    </button>
-                    <span class="theme-label">
-                        <span class="theme-light">Light</span>
-                        <span class="theme-dark">Dark</span>
-                    </span>
-                </div>
-
-                <div class="user-profile">
-                    <div class="user-avatar">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                            <circle cx="12" cy="8" r="5" stroke="currentColor" stroke-width="2"/>
-                            <path d="M20 21C20 16.5817 16.4183 13 12 13C7.58172 13 4 16.5817 4 21" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                    </div>
-                    <div class="user-info">
-                        <div class="user-name">Admin</div>
-                        <div class="user-status">Online</div>
-                    </div>
-                </div>
-            </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Header -->
-            <header class="content-header">
-                <div class="header-left">
-                    <h1 class="page-title">My Contacts</h1>
-                    <p class="page-subtitle">Manage your contacts efficiently</p>
-                </div>
-                <div class="header-right">
-                    <div class="search-box">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                            <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
-                            <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                        <input type="text" id="searchInput" placeholder="Search contacts...">
-                    </div>
-                    <div class="view-switcher">
-                        <button class="view-btn active" data-view="grid" title="Grid View">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                                <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
-                                <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
-                                <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
-                                <rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
-                            </svg>
-                        </button>
-                        <button class="view-btn" data-view="list" title="List View">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                                <path d="M8 6H21M8 12H21M8 18H21M3 6H3.01M3 12H3.01M3 18H3.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </header>
-
-            <!-- Add Contact Section -->
-            <section id="addSection" class="content-section hidden">
-                <div class="form-card">
-                    <div class="form-header">
-                        <h2>Add New Contact</h2>
-                        <p>Fill in the details to create a new contact</p>
-                    </div>
-                    <form id="contactForm" class="contact-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="nama">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                        <circle cx="12" cy="8" r="5" stroke="currentColor" stroke-width="2"/>
-                                        <path d="M20 21C20 16.5817 16.4183 13 12 13C7.58172 13 4 16.5817 4 21" stroke="currentColor" stroke-width="2"/>
-                                    </svg>
-                                    Full Name
-                                </label>
-                                <input type="text" id="nama" placeholder="Enter full name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="noTelp">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                        <path d="M22 16.92V19.92C22 20.4728 21.5523 20.9205 21 20.9205C10.3945 20.4714 2 12.0769 2 1.47143C2 0.918861 2.44772 0.47143 3 0.47143H6C6.55228 0.47143 7 0.918861 7 1.47143C7 3.47143 7.5 5.47143 8.5 7.47143" stroke="currentColor" stroke-width="2"/>
-                                    </svg>
-                                    Phone Number
-                                </label>
-                                <input type="tel" id="noTelp" placeholder="08123456789" required>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                        <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
-                                        <path d="M3 7L12 13L21 7" stroke="currentColor" stroke-width="2"/>
-                                    </svg>
-                                    Email Address
-                                </label>
-                                <input type="email" id="email" placeholder="email@example.com" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="lokasi">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                        <path d="M12 2C8.13401 2 5 5.13401 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13401 15.866 2 12 2Z" stroke="currentColor" stroke-width="2"/>
-                                        <circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="2"/>
-                                    </svg>
-                                    Location
-                                </label>
-                                <input type="text" id="lokasi" placeholder="City, Country" required>
-                            </div>
-                        </div>
-
-                        <div class="form-actions">
-                            <button type="button" class="btn btn-secondary" onclick="cancelEdit()">
-                                Cancel
-                            </button>
-                            <button type="submit" class="btn btn-primary">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                                    <path d="M19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H16L21 8V19C21 20.1046 20.1046 21 19 21Z" stroke="currentColor" stroke-width="2"/>
-                                    <path d="M7 3V8H15" stroke="currentColor" stroke-width="2"/>
-                                    <path d="M7 13H17V21H7V13Z" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                                <span id="submitText">Save Contact</span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </section>
-
-            <!-- Contacts List Section -->
-            <section id="contactsSection" class="content-section">
-                <div id="contactsGrid" class="contacts-grid"></div>
-                <div id="emptyState" class="empty-state">
-                    <div class="empty-icon">
-                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none">
-                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
-                            <path d="M8 14C8 14 9.5 16 12 16C14.5 16 16 14 16 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            <circle cx="9" cy="9" r="1" fill="currentColor"/>
-                            <circle cx="15" cy="9" r="1" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h3>No Contacts Yet</h3>
-                    <p>Start by adding your first contact</p>
-                    <button class="btn btn-primary" onclick="showAddSection()">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                            <path d="M12 8V16M8 12H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                        Add First Contact
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <h1>📇 Address Book</h1>
+                <div class="header-info">
+                    <span class="total-contacts">Total: <strong id="totalCount">0</strong></span>
+                    <button class="theme-toggle" id="themeToggle" title="Ganti Tema">
+                        <span class="icon-light">☀️</span>
+                        <span class="icon-dark">🌙</span>
                     </button>
                 </div>
-            </section>
+            </div>
+        </header>
 
-            <!-- Statistics Section -->
-            <section id="statsSection" class="content-section hidden">
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon purple">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M17 21V19C17 16.7909 15.2091 15 13 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2"/>
-                                <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
-                            </svg>
-                        </div>
-                        <div class="stat-info">
-                            <div class="stat-value" id="statTotal">0</div>
-                            <div class="stat-label">Total Contacts</div>
-                        </div>
+        <!-- Form Tambah Kontak -->
+        <div class="form-container">
+            <h2 id="formTitle">Tambah Kontak Baru</h2>
+            <form id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nama">Nama Lengkap *</label>
+                        <input type="text" id="nama" required placeholder="Contoh: Ahmad Rizki">
                     </div>
-
-                    <div class="stat-card">
-                        <div class="stat-icon blue">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                                <path d="M12 8V16M8 12H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                        <div class="stat-info">
-                            <div class="stat-value" id="statRecent">0</div>
-                            <div class="stat-label">Added This Week</div>
-                        </div>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-icon green">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M22 11.08V12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C15.3 2 18.23 3.64 20 6.19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M22 4L12 14L9 11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                        <div class="stat-info">
-                            <div class="stat-value">100%</div>
-                            <div class="stat-label">Data Saved</div>
-                        </div>
+                    <div class="form-group">
+                        <label for="noTelp">No. Telepon *</label>
+                        <input type="tel" id="noTelp" required placeholder="Contoh: 081234567890">
                     </div>
                 </div>
-
-                <div class="chart-card">
-                    <h3>Storage Information</h3>
-                    <div class="storage-info">
-                        <div class="storage-bar">
-                            <div class="storage-fill" id="storageBar"></div>
-                        </div>
-                        <div class="storage-text">
-                            <span id="storageUsed">0 KB</span> / 5 MB Used
-                        </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" required placeholder="Contoh: email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="lokasi">Lokasi *</label>
+                        <input type="text" id="lokasi" required placeholder="Contoh: Jakarta">
                     </div>
                 </div>
-            </section>
-        </main>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <span id="btnText">Simpan</span>
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="cancelBtn" style="display: none;">
+                        ❌ Batal
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Pencarian & Filter -->
+        <div class="toolbar">
+            <input type="text" id="searchInput" placeholder="🔍 Cari nama, email, telepon..." class="search-box">
+            <div class="view-buttons">
+                <button class="view-btn active" id="gridView" title="Tampilan Grid">
+                    <span>▦</span>
+                </button>
+                <button class="view-btn" id="listView" title="Tampilan List">
+                    <span>☰</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Daftar Kontak -->
+        <div id="contactsContainer" class="contacts-grid"></div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="empty-state">
+            <div class="empty-icon">📭</div>
+            <h3>Belum Ada Kontak</h3>
+            <p>Mulai tambahkan kontak pertama Anda menggunakan form di atas</p>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2025 Address Book | Dibuat untuk UAS Pemrograman Web</p>
+        </footer>
     </div>
 
-    <script src="assets/scripts/script.js" defer></script>
-
+    <script src="assets/scripts/script.js"></script>
 </body>
 </html>
