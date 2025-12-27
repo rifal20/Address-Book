@@ -114,7 +114,7 @@ cancelBtn.addEventListener('click', function() {
 function resetForm() {
     editId = null;
     formTitle.textContent = 'Tambah Kontak Baru';
-    btnText.textContent = '💾 Simpan';
+    btnText.textContent = 'Simpan Kontak';
     cancelBtn.style.display = 'none';
 }
 
@@ -147,21 +147,27 @@ function render(data = null) {
             </div>
             <div class="contact-info">
                 <div class="info-item">
-                    <span>📞</span>
+                    <img src="assets/images/phone.png" alt="Phone">
                     <span>${escapeHTML(contact.noTelp)}</span>
                 </div>
                 <div class="info-item">
-                    <span>✉️</span>
+                    <img src="assets/images/email.png" alt="Email">
                     <span>${escapeHTML(contact.email)}</span>
                 </div>
                 <div class="info-item">
-                    <span>📍</span>
+                    <img src="assets/images/location.png" alt="Location">
                     <span>${escapeHTML(contact.lokasi)}</span>
                 </div>
             </div>
             <div class="contact-actions">
-                <button class="btn-edit" onclick="editContact(${contact.id})">✏️ Edit</button>
-                <button class="btn-delete" onclick="deleteContact(${contact.id})">🗑️ Hapus</button>
+                <button class="btn-edit" onclick="editContact(${contact.id})">
+                    <img src="assets/images/edit.png" alt="Edit">
+                    Edit
+                </button>
+                <button class="btn-delete" onclick="deleteContact(${contact.id})">
+                    <img src="assets/images/delete.png" alt="Delete">
+                    Hapus
+                </button>
             </div>
         </div>
     `).join('');
@@ -179,7 +185,7 @@ function editContact(id) {
     
     editId = id;
     formTitle.textContent = 'Edit Kontak';
-    btnText.textContent = '✅ Update';
+    btnText.textContent = 'Update Kontak';
     cancelBtn.style.display = 'inline-block';
     
     window.scrollTo({ top: 0, behavior: 'smooth' });

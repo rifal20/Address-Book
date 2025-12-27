@@ -53,6 +53,17 @@ header {
     align-items: center;
 }
 
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 35px;
+    height: 35px;
+}
+
 header h1 {
     font-size: 28px;
     color: var(--text);
@@ -76,8 +87,16 @@ header h1 {
     width: 40px;
     height: 40px;
     cursor: pointer;
-    font-size: 20px;
     transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.theme-toggle img {
+    width: 22px;
+    height: 22px;
 }
 
 .theme-toggle:hover {
@@ -124,6 +143,15 @@ body.dark .icon-light {
     font-weight: 500;
     font-size: 14px;
     color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.label-icon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.7;
 }
 
 .form-group input {
@@ -184,9 +212,24 @@ body.dark .icon-light {
     margin-bottom: 20px;
 }
 
-.search-box {
+.search-wrapper {
     flex: 1;
-    padding: 10px 15px;
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    opacity: 0.5;
+}
+
+.search-box {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
     border: 1px solid var(--border);
     border-radius: 8px;
     font-size: 14px;
@@ -211,19 +254,25 @@ body.dark .icon-light {
     background: var(--bg-secondary);
     border-radius: 8px;
     cursor: pointer;
-    font-size: 18px;
     transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.view-btn img {
+    width: 20px;
+    height: 20px;
 }
 
 .view-btn:hover {
     background: var(--primary);
-    color: white;
     border-color: var(--primary);
 }
 
 .view-btn.active {
     background: var(--primary);
-    color: white;
     border-color: var(--primary);
 }
 
@@ -297,6 +346,12 @@ body.dark .icon-light {
     margin-bottom: 5px;
 }
 
+.info-item img {
+    width: 16px;
+    height: 16px;
+    opacity: 0.6;
+}
+
 .contact-actions {
     display: flex;
     gap: 8px;
@@ -311,6 +366,15 @@ body.dark .icon-light {
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.contact-actions img {
+    width: 14px;
+    height: 14px;
 }
 
 .btn-edit {
@@ -345,8 +409,10 @@ body.dark .icon-light {
 }
 
 .empty-icon {
-    font-size: 80px;
-    margin-bottom: 15px;
+    width: 100px;
+    height: 100px;
+    opacity: 0.2;
+    margin: 0 auto 15px;
 }
 
 .empty-state h3 {
@@ -386,5 +452,9 @@ footer {
         flex-direction: column;
         gap: 15px;
         text-align: center;
+    }
+    
+    .brand {
+        justify-content: center;
     }
 }

@@ -11,12 +11,15 @@
         <!-- Header -->
         <header>
             <div class="header-content">
-                <h1>📇 Address Book</h1>
+                <div class="brand">
+                    <img src="assets/images/user.png" alt="Logo" class="logo-icon">
+                    <h1>Address Book</h1>
+                </div>
                 <div class="header-info">
-                    <span class="total-contacts">Total: <strong id="totalCount">0</strong></span>
+                    <span class="total-contacts">Total: <strong id="totalCount">0</strong> Kontak</span>
                     <button class="theme-toggle" id="themeToggle" title="Ganti Tema">
-                        <span class="icon-light">☀️</span>
-                        <span class="icon-dark">🌙</span>
+                        <img src="assets/images/sun.png" alt="Light Mode" class="icon-light">
+                        <img src="assets/images/moon.png" alt="Dark Mode" class="icon-dark">
                     </button>
                 </div>
             </div>
@@ -28,30 +31,42 @@
             <form id="contactForm">
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="nama">Nama Lengkap *</label>
+                        <label for="nama">
+                            <img src="assets/images/user.png" alt="User" class="label-icon">
+                            Nama Lengkap *
+                        </label>
                         <input type="text" id="nama" required placeholder="Contoh: Ahmad Rizki">
                     </div>
                     <div class="form-group">
-                        <label for="noTelp">No. Telepon *</label>
+                        <label for="noTelp">
+                            <img src="assets/images/phone.png" alt="Phone" class="label-icon">
+                            No. Telepon *
+                        </label>
                         <input type="tel" id="noTelp" required placeholder="Contoh: 081234567890">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="email">Email *</label>
+                        <label for="email">
+                            <img src="assets/images/email.png" alt="Email" class="label-icon">
+                            Email *
+                        </label>
                         <input type="email" id="email" required placeholder="Contoh: email@example.com">
                     </div>
                     <div class="form-group">
-                        <label for="lokasi">Lokasi *</label>
+                        <label for="lokasi">
+                            <img src="assets/images/location.png" alt="Location" class="label-icon">
+                            Lokasi *
+                        </label>
                         <input type="text" id="lokasi" required placeholder="Contoh: Jakarta">
                     </div>
                 </div>
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary" id="submitBtn">
-                        <span id="btnText">Simpan</span>
+                        <span id="btnText">Simpan Kontak</span>
                     </button>
                     <button type="button" class="btn btn-secondary" id="cancelBtn" style="display: none;">
-                        ❌ Batal
+                        Batal
                     </button>
                 </div>
             </form>
@@ -59,13 +74,16 @@
 
         <!-- Pencarian & Filter -->
         <div class="toolbar">
-            <input type="text" id="searchInput" placeholder="🔍 Cari nama, email, telepon..." class="search-box">
+            <div class="search-wrapper">
+                <img src="assets/images/search.png" alt="Search" class="search-icon">
+                <input type="text" id="searchInput" placeholder="Cari nama, email, atau telepon..." class="search-box">
+            </div>
             <div class="view-buttons">
                 <button class="view-btn active" id="gridView" title="Tampilan Grid">
-                    <span>▦</span>
+                    <img src="assets/images/grid.png" alt="Grid">
                 </button>
                 <button class="view-btn" id="listView" title="Tampilan List">
-                    <span>☰</span>
+                    <img src="assets/images/list.png" alt="List">
                 </button>
             </div>
         </div>
@@ -75,7 +93,7 @@
 
         <!-- Empty State -->
         <div id="emptyState" class="empty-state">
-            <div class="empty-icon">📭</div>
+            <img src="assets/images/user.png" alt="Empty" class="empty-icon">
             <h3>Belum Ada Kontak</h3>
             <p>Mulai tambahkan kontak pertama Anda menggunakan form di atas</p>
         </div>
