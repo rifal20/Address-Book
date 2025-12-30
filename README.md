@@ -4,8 +4,8 @@ A simple address book application to store and manage contact information.
 
 ## Link
 
-- URL Deployment:
-- Repository :
+- URL Deployment: https://listbookuser.vercel.app/
+- Repository : https://github.com/rifal20/Address-Book
 
 ## Features
 
